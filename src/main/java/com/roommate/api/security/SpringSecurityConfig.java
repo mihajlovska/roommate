@@ -42,7 +42,7 @@ public class SpringSecurityConfig  extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) {
         web.ignoring().antMatchers(
-               "/resources/**","/images/**");
+               "/resources/**","/images/**","/static/**");
     }
 
     @Bean
