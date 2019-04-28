@@ -1,8 +1,15 @@
 package com.roommate.api.repository;
 
-import com.roommate.api.model.Users;
+import com.roommate.api.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface UserRepository extends JpaRepository<Users,Long> {
-    Users findByUsername(String username);
+import java.util.Optional;
+
+@Repository
+public interface UserRepository extends JpaRepository<User,Long> {
+    Optional<User> findByEmail(String email);
+
+    Boolean existsByEmail(String email);
+
 }

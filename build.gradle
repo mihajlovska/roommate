@@ -1,0 +1,47 @@
+buildscript {
+    ext {
+        springBootVersion = "2.1.0.RELEASE"
+    }
+    repositories {
+        mavenCentral()
+        maven { url "https://repo.spring.io/plugins-release" }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'maven'
+
+group = 'com'
+version = '0.0.1-SNAPSHOT'
+
+description = """roommate"""
+
+sourceCompatibility = 1.5
+targetCompatibility = 1.5
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
+repositories {
+        
+     maven { url "http://repo.maven.apache.org/maven2" }
+}
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-security:${springBootVersion}")
+    compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
+    compile("org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}")
+    compile("org.springframework.boot:spring-boot-starter-mail:${springBootVersion}")
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf:${springBootVersion}")
+    runtime("org.postgresql:postgresql:42.2.3")
+    compile("org.springframework.boot:spring-boot-starter-data-elasticsearch:2.1.3.RELEASE")
+    compile("org.springframework.boot:spring-boot-starter-jdbc:2.1.3.RELEASE")
+    compile group: 'org.springframework.security', name: 'spring-security-oauth2-core', version: '5.0.0.M1'
+    runtime group: 'com.nimbusds', name: 'oauth2-oidc-sdk', version: '4.5'
+    compile group: 'org.springframework.security', name: 'spring-security-oauth2-client', version: '5.1.5.RELEASE'
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+    compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+    compileOnly group: 'org.projectlombok', name: 'lombok', version:'1.18.6'
+}
